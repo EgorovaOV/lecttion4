@@ -1,0 +1,73 @@
+// Многомерные массива и рекурсия
+// Двумерные массива
+//тип данных, запятая в [] указ. что две размерности,наимен, 2 3сколько строк и столбцов
+// string[,] table = new string [2,3]; это массив строк, таблица из строк
+// int[,] matrix = new int[5,8]; это таблица чисел
+
+//string[,] table = new string [2, 5];
+//чтобы обратиться к нужному элементу
+// индексы идут от 0, table [0, 0] первый элемент, table [0, 4] последний в первой строке
+// для строк инициализация происх константой String.Empty по умолчанию строки пустые
+//table[1, 2] = "слово";
+// индекс назыв rows
+//for (int rows = 0; rows < 2; rows ++)
+// {
+    // вложенный цикл обозн кол столбцов
+  //  for (int columns = 0; columns < 5; columns ++)
+ //   {
+// Console.WriteLine($"-{table[rows , columns]}-");
+ //   }
+//} 
+
+//int[,] matrix = new int [3, 4]; сначала было тут, а с методом перенесли в конец
+// а теперь добавим метод, который будет заполнять таблицу числами
+void PrintArray(int[,] matr )// в качестве аргумента пердаем прямоуг аблицу чисел
+{//для текущего кода обрамление в виде {}
+for (int i = 0; i < matr.GetLength(0); i++)// i<3 это указываемконкретно, а можно дать оператору в качестве аргумента передаем 0, это количество строк у нас 3
+{
+    for (int j = 0; j < matr.GetLength(1); j++)//также и тут вместо j<4 , а в скобках 1
+    {
+Console.Write($"{matr[i, j]} ");// поставили пробел после массива
+    }
+    Console.WriteLine();// вот он переход
+}
+// но получились все в 1 столбец, сделаем принудит переход на новую строку
+}
+// тметод, заполн матрицу случ числами
+
+void FillArray(int[,] matr)
+{
+    for (int i = 0; i < matr.GetLongLength(0); i++)
+    {
+      for (int j = 0; j < matr.GetLongLength(1); j++)  
+      {
+          matr[i,j] = new Random().Next(1,10);//полуинтервал от 1 до 10
+      }
+    }
+}
+
+int[,] matrix = new int [3, 4];
+
+PrintArray (matrix);
+FillArray(matrix);
+Console.WriteLine();
+PrintArray(matrix);
+
+//int Factorial(int n)
+//{
+   // if(n == 1) return 1;
+    //else return n * Factorial(n-1);
+//}
+//for (int i = 1; i< 40; i++)
+//{
+//Console.WriteLine($"{i}! = {Factorial(i)}");
+//}
+double Factorial(int n)
+{
+    if(n == 1) return 1;
+    else return n * Factorial(n-1);
+}
+for (int i = 1; i< 40; i++)
+{
+Console.WriteLine($"{i}! = {Factorial(i)}");
+}
