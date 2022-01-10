@@ -41,7 +41,8 @@ void FillArray(int[,] matr)
     {
       for (int j = 0; j < matr.GetLongLength(1); j++)  
       {
-          matr[i,j] = new Random().Next(1,10);//полуинтервал от 1 до 10
+          matr[i,j] = new Random().Next(1,10);//полуинтервал от 1 до 10 с помощью генератора
+          //псевдослучайных чисел
       }
     }
 }
@@ -50,19 +51,57 @@ int[,] matrix = new int [3, 4];
 
 PrintArray (matrix);
 FillArray(matrix);
-Console.WriteLine();
+Console.WriteLine();//прослойка между нулями и заполненным массивом
 PrintArray(matrix);
 
+//имя массива.GetLength(0) указывает количество строк в массиве
+//имя массива.GetLength(1) возварщает количество столбцов
+
+//int[,] pic = new int[,]
+// и далее прямо вводим конкрентый масссив (есть уже фикс данные), то конкр размер можно не указывать
+//{
+  //  {0,0/0}
+    //{1,1,1}
+//}
+// введем метод печати массива БОЛЬШОЙ ПАЛЕЦ
+//но будут печататьсяя как 0 так и 1
+void ImageArray(int[,] image)
+{
+    for (int i = 0; i < image.GetLenght(0); j++)
+    {
+        // а в момент вывода хитро если 0, печатаем пробел
+        //if (image[i,j]== 0) Console.Write($" ");
+        //else Console.Write($"+");
+    //Console.WriteLine($"{image[i, j]} ");
+    }
+}
+Console.WriteLine();
+// потом сделаем метод дя закрашивания
+void FillImage(int row, int col)//указ позицию строки и пикселя, с которго начнем
+{
+    if (pic[row, col] == 0)// если пиксель не закрашен
+    {
+        pic[row, col] = 1;// будем красить единичкой
+        FillImage(row-1, col);
+        FillImage(row, col-1);
+        FillImage(row+1, col);
+        FillImage(row1, col+);
+    }
+}
+
+PrintImage(pic);
+FillImage (13, 13);
+PrintImage(pic);
 //int Factorial(int n)
 //{
-   // if(n == 1) return 1;
+   // if(n == 1) return 1;так как 1!=1 и 0!=1
     //else return n * Factorial(n-1);
 //}
 //for (int i = 1; i< 40; i++)
 //{
 //Console.WriteLine($"{i}! = {Factorial(i)}");
 //}
-double Factorial(int n)
+double Factorial(int n)//тип дабл,тк инт не вмещает большие числа
 {
     if(n == 1) return 1;
     else return n * Factorial(n-1);
@@ -71,4 +110,17 @@ for (int i = 1; i< 40; i++)
 {
 Console.WriteLine($"{i}! = {Factorial(i)}");
 }
-лялял
+
+//числа фибоначи F(1) = 1
+//f(2) = 1
+//f(n) = f(n -1) + f(n-2)
+int Fibonacci (int n)
+{
+    if(n == 1|| n== 2) return 1;
+    else return Fibonacci(n-1) + Fibonacci(n-2);//обязательно смотри - должно быть вернуть
+}
+
+for (int i = 1; i< 10; i++)
+{
+    Console.WriteLine(Fibonacci(i));
+}
